@@ -10,8 +10,8 @@ function LoginPage() {
     password: '',
   })
   const { isAuth, login } = useContext(GlobalContext)
-  const history = useHistory()
   const { userName, password } = user
+  const history = useHistory()
 
   useEffect(() => {
     console.log('a')
