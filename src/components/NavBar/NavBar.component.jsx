@@ -16,13 +16,14 @@ import { GlobalContext } from '../../providers/Global/Global.provider'
 
 function NavBar() {
   const [params, setParams] = useState('wizeline')
-  const { onSubmitSearch, changeTheme, darkTheme } = useContext(GlobalContext)
+  const { onSubmitSearch, changeTheme, darkTheme, isAuth, logOut } =
+    useContext(GlobalContext)
   const history = useHistory()
 
   // Functions
   const onSubmit = (e) => {
     e.preventDefault()
-    history.push('./')
+    history.push('/')
     onSubmitSearch(params)
   }
 
@@ -53,7 +54,14 @@ function NavBar() {
               </Button>
             </Form>
             <div>
-              <a href={'/home'}>Login</a>
+              {isAuth ? (
+                <a onClick={logOut} href="#">
+                  LogOut
+                </a>
+              ) : (
+                <a href={'/login'}>Login</a>
+              )}
+
               <Form>
                 <Form.Check
                   type="switch"

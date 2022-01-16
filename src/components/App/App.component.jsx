@@ -24,13 +24,13 @@ function App() {
               <Route exact path="/">
                 <HomePage />
               </Route>
-              <Route exact path="/:videoid">
+              <Route exact path="/video/:videoid">
                 <VideoDetails />
               </Route>
               <Route exact path="/login">
                 <LoginPage />
               </Route>
-              <Private exact path="/secret">
+              <Private exact path="/favorites">
                 <Favorites />
               </Private>
               <Route path="*">

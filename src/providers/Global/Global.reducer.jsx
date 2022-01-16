@@ -1,4 +1,4 @@
-import { CHANGE_THEME, SET_SEARCH_PARAM } from './GloBal.types'
+import { CHANGE_THEME, SET_SEARCH_PARAM, LOG_IN, LOG_OUT } from './GloBal.types'
 
 export default (state, action) => {
   switch (action.type) {
@@ -12,6 +12,16 @@ export default (state, action) => {
       return {
         ...state,
         darkTheme: !state.darkTheme,
+      }
+    case LOG_IN:
+      return {
+        ...state,
+        isAuth: true,
+      }
+    case LOG_OUT:
+      return {
+        ...state,
+        isAuth: false,
       }
     default:
       return state

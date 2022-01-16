@@ -1,19 +1,21 @@
-.login {
+import styled from 'styled-components'
+
+export const LoginContainer = styled.div`
   width: 300px;
-}
+  h1 {
+    text-align: center;
+    letter-spacing: -1px;
+  }
+  align-items: center;
+  margin: auto;
+`
 
-.login h1 {
-  text-align: center;
-  letter-spacing: -1px;
-}
-
-.login-form {
+export const LoginForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-}
 
-.form-group {
+  .form-group {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -28,16 +30,16 @@
 }
 
 .form-group input {
-  color: white;
+  color: black;
   font-size: 1.2rem;
   width: 100%;
   padding: 0.4rem 0.6rem;
-  border-radius: 3px;
-  border: 1px solid white;
+  border-radius: 5px;
+  border: 1px solid grey;
   background-color: rgba(0 0 0 10%);
 }
 
-.login-form button[type="submit"] {
+button[type="submit"] {
   width: 5rem;
   margin-top: 1rem;
   padding: 0.4rem 0.6rem;
@@ -45,3 +47,5 @@
   border: none;
   border-radius: 3px;
 }
+
+}`

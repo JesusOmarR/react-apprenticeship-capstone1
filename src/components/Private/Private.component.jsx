@@ -1,17 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Route, Redirect } from 'react-router-dom'
-
-import { useAuth } from '../../providers/Auth'
+import { GlobalContext } from '../../providers/Global/Global.provider'
 
 // eslint-disable-next-line react/prop-types
 function Private({ children, ...rest }) {
-  const { authenticated } = useAuth()
-
+  const { isAuth } = useContext(GlobalContext)
   return (
-    <Route
-      {...rest}
-      render={() => (authenticated ? children : <Redirect to="/" />)}
-    />
+    <Route {...rest} render={() => (isAuth ? children : <Redirect to="/" />)} />
   )
 }
 
