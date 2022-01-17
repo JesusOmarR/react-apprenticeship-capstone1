@@ -7,29 +7,26 @@ import ItemList from '../../components/ItemList'
 import { GlobalContext } from '../../providers/Global/Global.provider'
 
 function HomePage() {
-  const [youtubeItems, setYoutubeItems] = useState([])
+  const [favoriteItems, setFavoriteItems] = useState([])
   const [loading, setLoading] = useState(false)
 
   // Use Context
   const { darkTheme } = useContext(GlobalContext)
 
   // Functions
-  useEffect(() => {}, [])
 
   useEffect(() => {
-    return () => {
-      setYoutubeItems([])
-      setLoading(false)
-    }
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || []
+    setFavoriteItems(favorites)
   }, [])
 
-  return loading ? (
-    '...Loading'
-  ) : (
+  return favoriteItems.length > 0 ? (
     <HomeContainer darkTheme={darkTheme}>
       <HomeSubheader>Favorite videos</HomeSubheader>
-      <ItemList items={youtubeItems} />
+      <ItemList items={favoriteItems} />
     </HomeContainer>
+  ) : (
+    'Ups you dont have favorite videos yet'
   )
 }
 
