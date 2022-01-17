@@ -1,5 +1,5 @@
 import React from 'react'
-import { screen, render, debug, fireEvent } from '@testing-library/react'
+import { screen, render, fireEvent } from '@testing-library/react'
 import videoData from '../../../mock/searchVideo.MockData.json'
 import relatedData from '../../../mock/relatedVideos.mockData.json'
 import VideoComponent from '../VideoComponent'
@@ -24,9 +24,16 @@ describe('Testing Video component', () => {
     expect(title).toBeInTheDocument
   })
 
+  // Add to favorites button
+
   it('The page shloud display a add to favorites button', () => {
+    const providerProps = {
+      isAuth: true,
+    }
     render(
-      <VideoComponent video={videoData} relatedVideos={relatedData.items} />
+      <GlobalProvider>
+        <VideoComponent video={videoData} relatedVideos={relatedData.items} />
+      </GlobalProvider>
     )
     const buttonText = screen.getByText('Add Favorites')
     expect(buttonText).toBeInTheDocument
@@ -46,26 +53,33 @@ describe('Testing Video component', () => {
     expect(favoritesList[0]).toEqual(videoData)
   })
 
-  it('Displays Remove from Favorites if the item is on the localstorage', () => {
-    render(
-      <VideoComponent video={videoData} relatedVideos={relatedData.items} />
-    )
+  it('Displays Remove from Favorites if the item is on the localstorage', async () => {
+    const providerProps = {
+      isAuth: true,
+    }
+
     const favorites = []
     favorites.push(videoData)
-
     localStorage.setItem('favorites', JSON.stringify(favorites))
-
-    const buttonText = screen.getByText('Remove from Favorites')
-  })
-  it('Removes the video from the favorites list', () => {
     render(
       <GlobalProvider>
         <VideoComponent video={videoData} relatedVideos={relatedData.items} />
       </GlobalProvider>
     )
+
+    const buttonText = await screen.findByText('Remove from Favorites')
+  })
+
+  it('Removes the video from the favorites list', () => {
     const favorites = []
     favorites.push(videoData)
     localStorage.setItem('favorites', JSON.stringify(favorites))
+
+    render(
+      <GlobalProvider>
+        <VideoComponent video={videoData} relatedVideos={relatedData.items} />
+      </GlobalProvider>
+    )
 
     const favoritesButton = screen.getByRole('button')
     fireEvent.click(favoritesButton)

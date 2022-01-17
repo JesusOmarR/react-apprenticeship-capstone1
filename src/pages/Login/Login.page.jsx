@@ -26,7 +26,7 @@ function LoginPage() {
     loginApi(userName, password)
       .then((response) => {
         console.log(response)
-        login()
+        login(response)
         history.push('/')
       })
       .catch((err) => {

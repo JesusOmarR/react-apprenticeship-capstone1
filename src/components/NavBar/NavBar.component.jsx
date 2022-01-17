@@ -80,10 +80,19 @@ function NavBar() {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id="offcanvasNavbarLabel">
-                <a href="/favorites">Favorites</a>
+                Wize Tube
               </Offcanvas.Title>
             </Offcanvas.Header>
-            <Offcanvas.Body>Favs</Offcanvas.Body>
+            <Offcanvas.Body>
+              <p>
+                <a href="/">Home</a>
+              </p>
+              {isAuth ? (
+                <a href="/favorites">Favorites</a>
+              ) : (
+                <a href="/login">Login</a>
+              )}
+            </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
       </Navbar>

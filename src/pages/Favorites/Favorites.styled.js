@@ -7,6 +7,7 @@ export const HomeContainer = styled.div`
   align-items: center;
   margin: 0;
   width: 100vw;
+  min-height: 90vh;
   background-color: ${(props) =>
     !props.darkTheme ? 'white' : 'rgb(211,211,211)'};
 `

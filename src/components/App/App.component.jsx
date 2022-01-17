@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 // Providers
-import AuthProvider from '../../providers/Auth'
 import { GlobalProvider } from '../../providers/Global/Global.provider'
 
 // Pages
@@ -19,30 +18,28 @@ function App() {
   return (
     <BrowserRouter>
       <GlobalProvider>
-        <AuthProvider>
-          <Layout>
-            <Switch>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route exact path="/video/:videoid">
-                <VideoDetails />
-              </Route>
-              <Route exact path="/login">
-                <LoginPage />
-              </Route>
-              <Private exact path="/favorites">
-                <Favorites />
-              </Private>
-              <Private exact path="/favorites/:videoid">
-                <FavoriteVideoDetails />
-              </Private>
-              <Route path="*">
-                <NotFound />
-              </Route>
-            </Switch>
-          </Layout>
-        </AuthProvider>
+        <Layout>
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route exact path="/video/:videoid">
+              <VideoDetails />
+            </Route>
+            <Route exact path="/login">
+              <LoginPage />
+            </Route>
+            <Private exact path="/favorites">
+              <Favorites />
+            </Private>
+            <Private exact path="/favorites/:videoid">
+              <FavoriteVideoDetails />
+            </Private>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </Layout>
       </GlobalProvider>
     </BrowserRouter>
   )

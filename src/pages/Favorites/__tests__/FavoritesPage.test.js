@@ -11,14 +11,14 @@ describe('Testing Favorite Videos page', () => {
     cleanup
   })
 
-  it('shows the page title if there are favorite videos', async () => {
+  it('It shows a warning y there are not favorite videos', async () => {
     render(<Favorites />)
 
-    expect(await screen.findByText('Ups you dont have favorite videos yet'))
+    expect(await screen.findByText("'Ups you dont have favorite videos yet'"))
       .toBeInTheDocument
   })
 
-  it('It shows a warning y there are not favorite videos', async () => {
+  it('shows the page title if there are favorite videos  ', async () => {
     render(<Favorites />)
 
     await waitFor(

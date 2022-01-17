@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import VideoComponent from '../../components/VideoComponent/VideoComponent'
-import { VideoDetailsContainer } from './FavoriteVideol.styled'
+import { FavoriteVideoDetailsContainer } from './FavoriteVideol.styled'
 import { Redirect } from 'react-router-dom'
 
 // Context
@@ -12,26 +12,26 @@ function FavoriteVideoDetails() {
   // videoId param to search the video
   const { videoid } = useParams()
   const { darkTheme, favoriteVideos } = useContext(GlobalContext)
-  const [videoDetailed, setVideoDetailed] = useState(null)
-  const [relatedVideos, setRelatedVideos] = useState([])
+  const [videoDetailed, setVideoDetailed] = useState({})
   const [loading, setLoading] = useState(false)
 
   // Functions
   useEffect(() => {
+    setLoading(true)
     const favoriteVideo = favoriteVideos.find(
       (video) => video.id.videoId === videoid
     )
-
     setVideoDetailed(favoriteVideo)
-    setRelatedVideos(favoriteVideos)
+    setLoading(false)
   }, [videoid])
 
-  return loading || !videoDetailed ? (
+  return loading ? (
     '..Loading'
   ) : (
-    <VideoDetailsContainer darkTheme={darkTheme}>
+    <FavoriteVideoDetailsContainer darkTheme={darkTheme}>
+      {!videoDetailed && <Redirect to="/favorites" />}
       <VideoComponent video={videoDetailed} relatedVideos={favoriteVideos} />
-    </VideoDetailsContainer>
+    </FavoriteVideoDetailsContainer>
   )
 }
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const VideoDetailsContainer = styled.div`
+export const FavoriteVideoDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;

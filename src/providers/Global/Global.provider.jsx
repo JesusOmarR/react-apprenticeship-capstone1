@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from 'react'
+import React, { useCallback, useReducer, useEffect } from 'react'
 import GlobalReducer from './Global.reducer'
 import {
   CHANGE_THEME,
