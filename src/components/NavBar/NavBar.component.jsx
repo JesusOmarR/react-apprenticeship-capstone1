@@ -9,7 +9,6 @@ import {
   Button,
 } from 'react-bootstrap'
 import { NavContainer, ItemsNavContainer } from './NavBar.styled'
-import { Link } from 'react-router-dom'
 
 /* // Utils
 import { useAuth } from '../../providers/Auth' */
@@ -34,9 +33,7 @@ function NavBar() {
                 Search
               </Button>
             </Form>
-            <Link disabled to={'/home'}>
-              Login
-            </Link>
+            <a href={'/home'}>Login</a>
           </ItemsNavContainer>
 
           <Navbar.Offcanvas
