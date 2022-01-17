@@ -11,7 +11,7 @@ import {
 import { NavContainer, ItemsNavContainer } from './NavBar.styled'
 import { useHistory } from 'react-router-dom'
 
-// Utils
+// Context
 import { GlobalContext } from '../../providers/Global/Global.provider'
 
 function NavBar() {
@@ -35,8 +35,11 @@ function NavBar() {
     <NavContainer>
       <Navbar bg={darkTheme ? 'dark' : 'light'} expand={false}>
         <Container fluid>
-          <ItemsNavContainer>
-            <Navbar.Toggle aria-controls="offcanvasNavbar" />
+          <ItemsNavContainer darkTheme={darkTheme}>
+            <Navbar.Toggle
+              bsPrefix="navbar-toggler"
+              aria-controls="offcanvasNavbar"
+            />
             <Form className="d-flex">
               <FormControl
                 type="search"
@@ -49,11 +52,27 @@ function NavBar() {
                   e.key === 'Enter' && e.preventDefault()
                 }}
               />
-              <Button onClick={onSubmit} variant="outline-success">
+
+              <Button
+                role={'search'}
+                onClick={onSubmit}
+                variant="outline-success"
+              >
                 Search
               </Button>
             </Form>
-            <div>
+
+            <div className="login-container">
+              <Form>
+                <Form.Check
+                  type="switch"
+                  id="custom-switch"
+                  onChange={onToogleChange}
+                  checked={darkTheme ? true : false}
+                  label="Dark theme"
+                  className="formcheck"
+                />
+              </Form>
               {isAuth ? (
                 <a onClick={logOut} href="#">
                   LogOut
@@ -61,15 +80,6 @@ function NavBar() {
               ) : (
                 <a href={'/login'}>Login</a>
               )}
-
-              <Form>
-                <Form.Check
-                  type="switch"
-                  id="custom-switch"
-                  onChange={onToogleChange}
-                  checked={darkTheme ? true : false}
-                />
-              </Form>
             </div>
           </ItemsNavContainer>
 

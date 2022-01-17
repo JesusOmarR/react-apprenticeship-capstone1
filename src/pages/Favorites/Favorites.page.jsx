@@ -1,6 +1,6 @@
 // Components
 import React, { useEffect, useState, useContext } from 'react'
-import { HomeContainer, HomeSubheader } from './Favorites.styled'
+import { FavoritesContainer, FavoritesSubheader } from './Favorites.styled'
 import ItemList from '../../components/ItemList'
 import { Alert } from 'react-bootstrap'
 
@@ -9,7 +9,6 @@ import { GlobalContext } from '../../providers/Global/Global.provider'
 
 function HomePage() {
   const [favoriteItems, setFavoriteItems] = useState([])
-  const [loading, setLoading] = useState(false)
 
   // Use Context
   const { darkTheme } = useContext(GlobalContext)
@@ -22,16 +21,18 @@ function HomePage() {
   }, [])
 
   return (
-    <HomeContainer darkTheme={darkTheme}>
+    <FavoritesContainer darkTheme={darkTheme}>
       {favoriteItems.length > 0 ? (
         <>
-          <HomeSubheader>Favorite videos</HomeSubheader>
-          <ItemList redirectLink={'/favorites'} items={favoriteItems} />{' '}
+          <FavoritesSubheader>Favorite videos</FavoritesSubheader>
+          <ItemList redirectLink={'/favorites'} items={favoriteItems} />
         </>
       ) : (
-        <Alert variant="danger">'Ups you dont have favorite videos yet'</Alert>
+        <Alert variant="danger">
+          &apos;Ups you dont have favorite videos yet&apos;
+        </Alert>
       )}
-    </HomeContainer>
+    </FavoritesContainer>
   )
 }
 

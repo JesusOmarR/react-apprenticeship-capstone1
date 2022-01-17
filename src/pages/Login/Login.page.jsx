@@ -14,7 +14,6 @@ function LoginPage() {
   const history = useHistory()
 
   useEffect(() => {
-    console.log('a')
     if (isAuth) {
       history.push('/')
     }

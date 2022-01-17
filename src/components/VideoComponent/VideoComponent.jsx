@@ -1,13 +1,16 @@
 // Modules
 import React, { useState, useContext } from 'react'
 import RelatedVideos from '../RelatedVideos'
-import { VideoComponentContainer } from './VideoComponent.styled'
+import {
+  VideoComponentContainer,
+  FavoritesButton,
+} from './VideoComponent.styled'
 import { useEffect } from 'react'
 import { GlobalContext } from '../../providers/Global/Global.provider'
 
 function VideoComponent({ video, relatedVideos }) {
   const [isOnFavorites, setIsOnFavorites] = useState(false)
-  const { addToFavorites, removeFromFavorites, isAuth } =
+  const { addToFavorites, removeFromFavorites, darkTheme } =
     useContext(GlobalContext)
 
   useEffect(() => {
@@ -45,11 +48,16 @@ function VideoComponent({ video, relatedVideos }) {
         </div>
         <h3>{video?.snippet?.title}</h3>{' '}
         {isOnFavorites ? (
-          <button onClick={removeFromFavoriteVideos}>
+          <FavoritesButton
+            darkTheme={darkTheme}
+            onClick={removeFromFavoriteVideos}
+          >
             Remove from Favorites
-          </button>
+          </FavoritesButton>
         ) : (
-          <button onClick={addToFavoriteVideos}>Add Favorites</button>
+          <FavoritesButton darkTheme={darkTheme} onClick={addToFavoriteVideos}>
+            Add Favorites
+          </FavoritesButton>
         )}
         <p>{video?.snippet?.description}</p>
       </div>

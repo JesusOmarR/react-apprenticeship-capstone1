@@ -6,7 +6,10 @@ import { GlobalContext } from '../../providers/Global/Global.provider'
 function Private({ children, ...rest }) {
   const { isAuth } = useContext(GlobalContext)
   return (
-    <Route {...rest} render={() => (isAuth ? children : <Redirect to="/" />)} />
+    <Route
+      {...rest}
+      render={() => (isAuth ? children : <Redirect to="/login" />)}
+    />
   )
 }
 

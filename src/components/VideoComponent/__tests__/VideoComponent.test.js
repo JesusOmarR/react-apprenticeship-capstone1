@@ -27,9 +27,6 @@ describe('Testing Video component', () => {
   // Add to favorites button
 
   it('The page shloud display a add to favorites button', () => {
-    const providerProps = {
-      isAuth: true,
-    }
     render(
       <GlobalProvider>
         <VideoComponent video={videoData} relatedVideos={relatedData.items} />
@@ -54,10 +51,6 @@ describe('Testing Video component', () => {
   })
 
   it('Displays Remove from Favorites if the item is on the localstorage', async () => {
-    const providerProps = {
-      isAuth: true,
-    }
-
     const favorites = []
     favorites.push(videoData)
     localStorage.setItem('favorites', JSON.stringify(favorites))
@@ -67,7 +60,7 @@ describe('Testing Video component', () => {
       </GlobalProvider>
     )
 
-    const buttonText = await screen.findByText('Remove from Favorites')
+    await screen.findByText('Remove from Favorites')
   })
 
   it('Removes the video from the favorites list', () => {
