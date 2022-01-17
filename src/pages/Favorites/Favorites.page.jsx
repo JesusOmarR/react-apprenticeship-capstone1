@@ -23,7 +23,7 @@ function HomePage() {
   return favoriteItems.length > 0 ? (
     <HomeContainer darkTheme={darkTheme}>
       <HomeSubheader>Favorite videos</HomeSubheader>
-      <ItemList items={favoriteItems} />
+      <ItemList redirectLink={'/favorites'} items={favoriteItems} />
     </HomeContainer>
   ) : (
     'Ups you dont have favorite videos yet'

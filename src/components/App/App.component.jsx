@@ -13,6 +13,7 @@ import Private from '../Private'
 import Layout from '../Layout'
 import Favorites from '../../pages/Favorites'
 import VideoDetails from '../../pages/VideoDetails'
+import FavoriteVideoDetails from '../../pages/FavoriteVideoDetails'
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
               </Route>
               <Private exact path="/favorites">
                 <Favorites />
+              </Private>
+              <Private exact path="/favorites/:videoid">
+                <FavoriteVideoDetails />
               </Private>
               <Route path="*">
                 <NotFound />

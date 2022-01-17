@@ -52,7 +52,7 @@ function HomePage() {
   ) : (
     <HomeContainer darkTheme={darkTheme}>
       <HomeSubheader>Welcome to Wize Tube!</HomeSubheader>
-      <ItemList items={youtubeItems} />
+      <ItemList redirectLink={'/video'} items={youtubeItems} />
     </HomeContainer>
   )
 }

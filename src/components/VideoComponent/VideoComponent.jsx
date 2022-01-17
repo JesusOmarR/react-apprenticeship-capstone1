@@ -1,11 +1,13 @@
 // Modules
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import RelatedVideos from '../RelatedVideos'
 import { VideoComponentContainer } from './VideoComponent.styled'
 import { useEffect } from 'react'
+import { GlobalContext } from '../../providers/Global/Global.provider'
 
 function VideoComponent({ video, relatedVideos }) {
   const [isOnFavorites, setIsOnFavorites] = useState(false)
+  const { addToFavorites, removeFromFavorites } = useContext(GlobalContext)
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favorites'))
@@ -17,19 +19,13 @@ function VideoComponent({ video, relatedVideos }) {
     }
   }, [])
 
-  const addToFavorites = () => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || []
-    favorites.push(video)
-    localStorage.setItem('favorites', JSON.stringify(favorites))
+  const addToFavoriteVideos = () => {
+    addToFavorites(video)
     setIsOnFavorites(true)
   }
 
-  const removeFromFavorites = () => {
-    let favorites = JSON.parse(localStorage.getItem('favorites'))
-    favorites = favorites.filter((favorite) => {
-      return favorite.etag !== video.etag
-    })
-    localStorage.setItem('favorites', JSON.stringify(favorites))
+  const removeFromFavoriteVideos = () => {
+    removeFromFavorites(video)
     setIsOnFavorites(false)
   }
 
@@ -48,9 +44,11 @@ function VideoComponent({ video, relatedVideos }) {
         </div>
         <h3>{video.snippet.title}</h3>{' '}
         {isOnFavorites ? (
-          <button onClick={removeFromFavorites}>Remove from Favorites</button>
+          <button onClick={removeFromFavoriteVideos}>
+            Remove from Favorites
+          </button>
         ) : (
-          <button onClick={addToFavorites}>Add Favorites</button>
+          <button onClick={addToFavoriteVideos}>Add Favorites</button>
         )}
         <p>{video.snippet.description}</p>
       </div>

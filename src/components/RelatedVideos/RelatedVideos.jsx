@@ -8,7 +8,7 @@ function RelatedVideos({ related }) {
 
   // Functions
   const onClickItem = (id) => {
-    history.push(`/video/${id}`)
+    history.push(`./${id}`)
   }
 
   // if  there are not related videos yet return a loading

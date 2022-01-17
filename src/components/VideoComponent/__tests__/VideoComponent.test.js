@@ -3,6 +3,7 @@ import { screen, render, debug, fireEvent } from '@testing-library/react'
 import videoData from '../../../mock/searchVideo.MockData.json'
 import relatedData from '../../../mock/relatedVideos.mockData.json'
 import VideoComponent from '../VideoComponent'
+import { GlobalProvider } from '../../../providers/Global/Global.provider'
 
 describe('Testing Video component', () => {
   it('render information of a video', () => {
@@ -33,32 +34,42 @@ describe('Testing Video component', () => {
 
   it('The button should add the item to the local storage', () => {
     render(
-      <VideoComponent video={videoData} relatedVideos={relatedData.items} />
+      <GlobalProvider>
+        <VideoComponent video={videoData} relatedVideos={relatedData.items} />
+      </GlobalProvider>
     )
+
     const favoritesButton = screen.getByRole('button')
     fireEvent.click(favoritesButton)
     const favoritesList = JSON.parse(localStorage.getItem('favorites'))
+
     expect(favoritesList[0]).toEqual(videoData)
   })
 
-  it('Display Remove from Favorites if the item is on the localstorage', () => {
+  it('Displays Remove from Favorites if the item is on the localstorage', () => {
     render(
       <VideoComponent video={videoData} relatedVideos={relatedData.items} />
     )
     const favorites = []
     favorites.push(videoData)
+
     localStorage.setItem('favorites', JSON.stringify(favorites))
+
     const buttonText = screen.getByText('Remove from Favorites')
   })
   it('Removes the video from the favorites list', () => {
     render(
-      <VideoComponent video={videoData} relatedVideos={relatedData.items} />
+      <GlobalProvider>
+        <VideoComponent video={videoData} relatedVideos={relatedData.items} />
+      </GlobalProvider>
     )
     const favorites = []
     favorites.push(videoData)
     localStorage.setItem('favorites', JSON.stringify(favorites))
+
     const favoritesButton = screen.getByRole('button')
     fireEvent.click(favoritesButton)
+
     const favoritesList = JSON.parse(localStorage.getItem('favorites'))
     expect(favoritesList).toEqual([])
   })

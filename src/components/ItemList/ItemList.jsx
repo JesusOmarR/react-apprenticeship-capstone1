@@ -3,13 +3,13 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { Card, ListContainer } from './ItemList.styled'
 
-function ItemList({ items }) {
+function ItemList({ items, redirectLink }) {
   // Constanst
   const history = useHistory()
 
   // Functions
   const onClickCard = (id) => {
-    history.push(`video/${id}`)
+    history.push(`${redirectLink}/${id}`)
   }
 
   return (

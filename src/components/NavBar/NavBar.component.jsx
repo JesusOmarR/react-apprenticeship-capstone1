@@ -80,7 +80,7 @@ function NavBar() {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id="offcanvasNavbarLabel">
-                Offcanvas
+                <a href="/favorites">Favorites</a>
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>Favs</Offcanvas.Body>
