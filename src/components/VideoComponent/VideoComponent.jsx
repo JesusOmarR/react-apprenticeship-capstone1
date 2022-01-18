@@ -3,6 +3,7 @@ import React from 'react'
 import RelatedVideos from '../RelatedVideos'
 import { VideoComponentContainer } from './VideoComponent.styled'
 
+
 const VideoComponent = ({ video, relatedVideos }) => (
   <VideoComponentContainer>
     <div className="videoInfo-container">

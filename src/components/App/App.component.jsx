@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 // Providers
-import AuthProvider from '../../providers/Auth'
 import { GlobalProvider } from '../../providers/Global/Global.provider'
 
 // Pages
@@ -15,22 +14,20 @@ function App() {
   return (
     <BrowserRouter>
       <GlobalProvider>
-        <AuthProvider>
-          <Layout>
-            <Switch>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route exact path="/:videoid">
-                <VideoDetails />
-              </Route>
+        <Layout>
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route exact path="/:videoid">
+              <VideoDetails />
+            </Route>
 
-              <Route path="*">
-                <NotFound />
-              </Route>
-            </Switch>
-          </Layout>
-        </AuthProvider>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </Layout>
       </GlobalProvider>
     </BrowserRouter>
   )

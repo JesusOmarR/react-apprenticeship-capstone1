@@ -16,7 +16,7 @@ import { GlobalContext } from '../../providers/Global/Global.provider'
 
 function NavBar() {
   const [params, setParams] = useState('wizeline')
-  const { onSubmitSearch } = useContext(GlobalContext)
+  const { onSubmitSearch, changeTheme, darkTheme } = useContext(GlobalContext)
   const history = useHistory()
 
   // Functions
@@ -26,9 +26,13 @@ function NavBar() {
     onSubmitSearch(params)
   }
 
+  const onToogleChange = () => {
+    changeTheme()
+  }
+
   return (
     <NavContainer>
-      <Navbar bg="light" expand={false}>
+      <Navbar bg={darkTheme ? 'dark' : 'light'} expand={false}>
         <Container fluid>
           <ItemsNavContainer>
             <Navbar.Toggle aria-controls="offcanvasNavbar" />
@@ -44,11 +48,25 @@ function NavBar() {
                   e.key === 'Enter' && e.preventDefault()
                 }}
               />
-              <Button onClick={onSubmit} variant="outline-success">
+              <Button
+                role={'search'}
+                onClick={onSubmit}
+                variant="outline-success"
+              >
                 Search
               </Button>
             </Form>
-            <a href={'/home'}>Login</a>
+            <div>
+              <a href={'/home'}>Login</a>
+              <Form>
+                <Form.Check
+                  type="switch"
+                  id="custom-switch"
+                  onChange={onToogleChange}
+                  checked={darkTheme ? true : false}
+                />
+              </Form>
+            </div>
           </ItemsNavContainer>
 
           <Navbar.Offcanvas
