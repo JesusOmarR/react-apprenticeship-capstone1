@@ -1,8 +1,13 @@
 import styled from 'styled-components'
 
 export const NavContainer = styled.div`
-  width: 100vw;
+  max-width: 100vw;
   background-color: red;
+
+  .side-toogle {
+  }
+  .side-menu__mobil {
+  }
 `
 export const ItemsNavContainer = styled.div`
   width: 100vw;
@@ -19,6 +24,16 @@ export const ItemsNavContainer = styled.div`
     a {
       margin: 0 1rem;
     }
+    @media only screen and (max-width: 570px) {
+      display: none;
+    }
+  }
+
+  .link-container {
+    display: flex;
+    @media only screen and (max-width: 720px) {
+      display: none;
+    }
   }
 
   .formcheck {
@@ -32,5 +47,19 @@ export const ItemsNavContainer = styled.div`
 export const IconImage = styled.img`
   width: 2rem;
   border-radius: 50%;
-  margin-right: 0.5rem;
+  margin-right: 0.8rem;
+`
+export const SideToogle = styled.div`
+  display: none;
+
+  @media only screen and (max-width: 570px) {
+    display: block;
+  }
+`
+export const SideLink = styled.div`
+  display: none;
+
+  @media only screen and (max-width: 720px) {
+    display: block;
+  }
 `

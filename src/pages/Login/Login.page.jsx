@@ -3,12 +3,14 @@ import { useHistory } from 'react-router'
 import { LoginContainer, LoginForm } from './LoginPage.styled'
 import loginApi from '../../utils/login.api'
 import { GlobalContext } from '../../providers/Global/Global.provider'
+import { Alert } from 'react-bootstrap'
 
 function LoginPage() {
   const [user, setUser] = useState({
     userName: '',
     password: '',
   })
+  const [loginError, setLoginError] = useState(false)
   const { isAuth, login } = useContext(GlobalContext)
   const { userName, password } = user
   const history = useHistory()
@@ -17,7 +19,6 @@ function LoginPage() {
     if (isAuth) {
       history.push('/')
     }
-    // eslint-disable-next-line
   }, [isAuth])
 
   const authenticate = (event) => {
@@ -31,6 +32,10 @@ function LoginPage() {
       })
       .catch((err) => {
         console.log(err)
+        setLoginError(true)
+        setTimeout(() => {
+          setLoginError(false)
+        }, 3000)
       })
   }
 
@@ -45,6 +50,7 @@ function LoginPage() {
   return (
     <LoginContainer>
       <h1>Welcome back!</h1>
+      {loginError && <Alert variant="danger">Invalid credentials</Alert>}
       <LoginForm>
         <div className="form-group">
           <label htmlFor="username">

@@ -8,7 +8,13 @@ import {
   FormControl,
   Button,
 } from 'react-bootstrap'
-import { NavContainer, ItemsNavContainer, IconImage } from './NavBar.styled'
+import {
+  NavContainer,
+  ItemsNavContainer,
+  IconImage,
+  SideToogle,
+  SideLink,
+} from './NavBar.styled'
 import { useHistory } from 'react-router-dom'
 
 // Context
@@ -33,7 +39,7 @@ function NavBar() {
 
   return (
     <NavContainer>
-      <Navbar bg={darkTheme ? 'dark' : 'light'} expand={false}>
+      <Navbar collapseOnSelect bg={darkTheme ? 'dark' : 'light'} expand={false}>
         <Container fluid>
           <ItemsNavContainer darkTheme={darkTheme}>
             <Navbar.Toggle
@@ -72,7 +78,7 @@ function NavBar() {
                   className="formcheck"
                 />
               </Form>
-              <div>
+              <div className="link-container">
                 {isAuth ? (
                   <a onClick={logOut} href="/">
                     LogOut
@@ -96,6 +102,19 @@ function NavBar() {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
+              <SideToogle>
+                <Form>
+                  <Form.Check
+                    type="switch"
+                    id="custom-switch"
+                    onChange={onToogleChange}
+                    checked={darkTheme ? true : false}
+                    label="Dark theme"
+                    className="formcheck"
+                  />
+                </Form>
+              </SideToogle>
+
               <p>
                 <a href="/">Home</a>
               </p>
@@ -104,6 +123,18 @@ function NavBar() {
               ) : (
                 <a href="/login">Login</a>
               )}
+
+              <SideLink>
+                <div className="side-link">
+                  {isAuth ? (
+                    <a onClick={logOut} href="/">
+                      LogOut
+                    </a>
+                  ) : (
+                    <a href={'/login'}>Login</a>
+                  )}
+                </div>
+              </SideLink>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
