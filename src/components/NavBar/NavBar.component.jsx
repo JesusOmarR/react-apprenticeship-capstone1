@@ -52,7 +52,6 @@ function NavBar() {
                   e.key === 'Enter' && e.preventDefault()
                 }}
               />
-
               <Button
                 role={'search'}
                 onClick={onSubmit}

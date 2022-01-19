@@ -2,9 +2,9 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
 import { Router, Switch, Route } from 'react-router-dom'
-import Favorites from '../../../pages/Favorites'
-import LoginPage from '../../../pages/Login'
-import Private from '../../Private'
+import Favorites from '../../../pages/Favorites/Favorites.page'
+import LoginPage from '../../../pages/Login/Login.page'
+import Private from '../Private.component'
 import { GlobalContext } from '../../../providers/Global/Global.provider'
 
 it('redirects unauthenticated users to SignIn', async () => {

@@ -6,11 +6,11 @@ import { GlobalProvider } from '../../providers/Global/Global.provider'
 
 // Pages
 import HomePage from '../../pages/Home'
-import LoginPage from '../../pages/Login'
+import LoginPage from '../../pages/Login/Login.page'
 import NotFound from '../../pages/NotFound'
-import Private from '../Private'
+import Private from '../Private/Private.component'
 import Layout from '../Layout'
-import Favorites from '../../pages/Favorites'
+import Favorites from '../../pages/Favorites/Favorites.page'
 import VideoDetails from '../../pages/VideoDetails'
 import FavoriteVideoDetails from '../../pages/FavoriteVideoDetails'
 

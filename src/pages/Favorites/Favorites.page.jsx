@@ -7,7 +7,7 @@ import { Alert } from 'react-bootstrap'
 // Context
 import { GlobalContext } from '../../providers/Global/Global.provider'
 
-function HomePage() {
+function Favorites() {
   // Use Context
   const { darkTheme, favoriteVideos } = useContext(GlobalContext)
 
@@ -29,4 +29,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export default Favorites
