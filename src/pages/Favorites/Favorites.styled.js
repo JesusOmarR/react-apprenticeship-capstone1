@@ -7,9 +7,12 @@ export const FavoritesContainer = styled.div`
   align-items: center;
   margin: 0;
   width: 100vw;
-  height: 100%;
   background-color: ${(props) =>
     !props.darkTheme ? 'white' : 'rgb(211,211,211)'};
+
+  .alert-div {
+    height: 100vh;
+  }
 `
 
 export const FavoritesSubheader = styled.h1`

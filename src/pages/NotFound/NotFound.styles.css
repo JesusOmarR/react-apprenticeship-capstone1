@@ -4,10 +4,20 @@
   display: block;
   text-align: right;
   padding: 0.2rem 0.3rem;
+  margin: 0 auto;
+}
+.not-found {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .home-link::before {
-  content: "←";
+  content: '←';
   padding-right: 0.2rem;
   display: inline-block;
+}
+.image-notfound {
+  width: 60%;
+  margin: 0 auto;
 }

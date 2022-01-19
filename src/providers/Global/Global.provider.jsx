@@ -13,8 +13,8 @@ import {
 const initialState = {
   searchParam: 'wizeline',
   darkTheme: JSON.parse(localStorage.getItem('theme')),
-  isAuth: Boolean(localStorage.getItem('Auth-Key')),
-  favoriteVideos: JSON.parse(localStorage.getItem('favorites')),
+  isAuth: JSON.parse(localStorage.getItem('Auth-Key')) || false,
+  favoriteVideos: JSON.parse(localStorage.getItem('favorites')) || [],
 }
 
 // context creation

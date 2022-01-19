@@ -1,5 +1,5 @@
 // Components
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { FavoritesContainer, FavoritesSubheader } from './Favorites.styled'
 import ItemList from '../../components/ItemList'
 import { Alert } from 'react-bootstrap'
@@ -8,29 +8,22 @@ import { Alert } from 'react-bootstrap'
 import { GlobalContext } from '../../providers/Global/Global.provider'
 
 function HomePage() {
-  const [favoriteItems, setFavoriteItems] = useState([])
-
   // Use Context
-  const { darkTheme } = useContext(GlobalContext)
-
-  // Functions
-
-  useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || []
-    setFavoriteItems(favorites)
-  }, [])
+  const { darkTheme, favoriteVideos } = useContext(GlobalContext)
 
   return (
     <FavoritesContainer darkTheme={darkTheme}>
-      {favoriteItems.length > 0 ? (
+      {favoriteVideos.length > 0 ? (
         <>
           <FavoritesSubheader>Favorite videos</FavoritesSubheader>
-          <ItemList redirectLink={'/favorites'} items={favoriteItems} />
+          <ItemList redirectLink={'/favorites'} items={favoriteVideos} />
         </>
       ) : (
-        <Alert variant="danger">
-          &apos;Ups you dont have favorite videos yet&apos;
-        </Alert>
+        <div className="alert-div">
+          <Alert variant="danger">
+            &apos;Ups you dont have favorite videos yet&apos;
+          </Alert>
+        </div>
       )}
     </FavoritesContainer>
   )

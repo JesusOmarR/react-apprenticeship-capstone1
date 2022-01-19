@@ -1,10 +1,12 @@
 // Component
-import React from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { RelatedContainer, RelatedItem, ItemImage } from './Related.styled'
+import { GlobalContext } from '../../providers/Global/Global.provider'
 
 function RelatedVideos({ related }) {
   const history = useHistory()
+  const { darkTheme } = useContext(GlobalContext)
 
   // Functions
   const onClickItem = (id) => {
@@ -15,7 +17,7 @@ function RelatedVideos({ related }) {
   return !related ? (
     <>...Loading</>
   ) : (
-    <RelatedContainer>
+    <RelatedContainer darkTheme={darkTheme}>
       {related.map((item) =>
         !item.snippet ? (
           ''
@@ -23,6 +25,7 @@ function RelatedVideos({ related }) {
           <RelatedItem
             key={item.id.videoId}
             onClick={() => onClickItem(item.id.videoId)}
+            darkTheme={darkTheme}
           >
             <ItemImage src={item?.snippet?.thumbnails?.high?.url} />
             <div className="item-info">

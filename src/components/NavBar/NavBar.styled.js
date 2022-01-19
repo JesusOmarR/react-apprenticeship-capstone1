@@ -29,3 +29,8 @@ export const ItemsNavContainer = styled.div`
     background-color: white;
   }
 `
+export const IconImage = styled.img`
+  width: 2rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+`

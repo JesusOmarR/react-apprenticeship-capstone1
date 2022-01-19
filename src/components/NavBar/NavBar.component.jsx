@@ -8,7 +8,7 @@ import {
   FormControl,
   Button,
 } from 'react-bootstrap'
-import { NavContainer, ItemsNavContainer } from './NavBar.styled'
+import { NavContainer, ItemsNavContainer, IconImage } from './NavBar.styled'
 import { useHistory } from 'react-router-dom'
 
 // Context
@@ -73,13 +73,16 @@ function NavBar() {
                   className="formcheck"
                 />
               </Form>
-              {isAuth ? (
-                <a onClick={logOut} href="#">
-                  LogOut
-                </a>
-              ) : (
-                <a href={'/login'}>Login</a>
-              )}
+              <div>
+                {isAuth ? (
+                  <a onClick={logOut} href="#">
+                    LogOut
+                  </a>
+                ) : (
+                  <a href={'/login'}>Login</a>
+                )}
+                <IconImage src={isAuth.avatarUrl}></IconImage>
+              </div>
             </div>
           </ItemsNavContainer>
 

@@ -7,6 +7,7 @@ export const RelatedContainer = styled.div`
   overflow-y: scroll;
   height: 100vh;
   padding: 0.5rem 1rem;
+  cursor: pointer;
 
   .item-info {
     padding: 0.5rem 0.5rem;
@@ -16,7 +17,7 @@ export const RelatedContainer = styled.div`
   }
   .item-channel {
     font-size: 0.5rem;
-    color: grey;
+    color: ${(props) => (props.darkTheme ? 'white' : 'grey')};
   }
 `
 
@@ -27,6 +28,8 @@ export const RelatedItem = styled.div`
   padding: 0;
   border: 1px solid grey;
   border-radius: 5px;
+  background-color: ${(props) =>
+    props.darkTheme ? '#8c8c8c' : 'rgba(216, 221, 253, 0.35)'};
 
   :hover {
     box-shadow: 1px 5px 3px grey;

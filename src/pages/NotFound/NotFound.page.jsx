@@ -9,10 +9,11 @@ function NotFoundPage() {
       <Link to="/" className="home-link">
         home
       </Link>
-      <h2>Ups! :(</h2>
+      <h2 className="home-link"> Ups! :(</h2>
       <img
         src="https://c.tenor.com/0UrmsdcX2v0AAAAd/confused-dog-cute.gif"
         alt="page not found"
+        className="image-notfound"
       />
     </section>
   )
