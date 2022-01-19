@@ -16,6 +16,7 @@ import {
   SideLink,
 } from './NavBar.styled'
 import { useHistory } from 'react-router-dom'
+import userAvatar from '../../assets/download.png'
 
 // Context
 import { GlobalContext } from '../../providers/Global/Global.provider'
@@ -86,7 +87,9 @@ function NavBar() {
                 ) : (
                   <a href={'/login'}>Login</a>
                 )}
-                <IconImage src={isAuth.avatarUrl}></IconImage>
+                <IconImage
+                  src={isAuth.avatarUrl ? isAuth.avatarUrl : userAvatar}
+                ></IconImage>
               </div>
             </div>
           </ItemsNavContainer>
