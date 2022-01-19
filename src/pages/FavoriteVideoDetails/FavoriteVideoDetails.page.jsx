@@ -23,6 +23,7 @@ function FavoriteVideoDetails() {
     )
     setVideoDetailed(favoriteVideo)
     setLoading(false)
+    // eslint-disable-next-line
   }, [videoid])
 
   return loading ? (

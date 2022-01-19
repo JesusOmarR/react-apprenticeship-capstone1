@@ -27,9 +27,9 @@ function ItemList({ items, redirectLink }) {
   return (
     <ListContainer>
       {items.map((video) => (
-        <>
+        <div key={video.etag}>
           {' '}
-          <Card key={video.etag} darkTheme={darkTheme}>
+          <Card darkTheme={darkTheme}>
             <div
               className="items-container"
               onClick={() => onClickCard(video.id.videoId)}
@@ -62,7 +62,7 @@ function ItemList({ items, redirectLink }) {
               </button>
             )}
           </Card>
-        </>
+        </div>
       ))}
     </ListContainer>
   )

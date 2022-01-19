@@ -8,6 +8,8 @@ export const RelatedContainer = styled.div`
   height: 100vh;
   padding: 0.5rem 1rem;
   cursor: pointer;
+  align-items: center;
+  margin: 0 auto;
 
   .item-info {
     padding: 0.5rem 0.5rem;
@@ -19,6 +21,13 @@ export const RelatedContainer = styled.div`
     font-size: 0.5rem;
     color: ${(props) => (props.darkTheme ? 'white' : 'grey')};
   }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media only screen and (max-width: 1080px) {
+    width: 95%;
+  }
 `
 
 export const RelatedItem = styled.div`
@@ -26,6 +35,7 @@ export const RelatedItem = styled.div`
   flex-direction: row;
   margin: 0.2rem 0;
   padding: 0;
+  width: 90%;
   border: 1px solid grey;
   border-radius: 5px;
   background-color: ${(props) =>

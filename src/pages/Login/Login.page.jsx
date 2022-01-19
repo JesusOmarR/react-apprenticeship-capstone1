@@ -17,6 +17,7 @@ function LoginPage() {
     if (isAuth) {
       history.push('/')
     }
+    // eslint-disable-next-line
   }, [isAuth])
 
   const authenticate = (event) => {

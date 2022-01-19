@@ -24,6 +24,13 @@ export const VideoComponentContainer = styled.div`
     width: 100%;
     height: 100%;
   }
+
+  @media only screen and (max-width: 1080px) {
+    flex-direction: column;
+    .videoInfo-container {
+      width: 95%;
+    }
+  }
 `
 export const FavoritesButton = styled.button`
   background-color: ${(props) => (!props.darkTheme ? '#3ca2c3' : 'black')};

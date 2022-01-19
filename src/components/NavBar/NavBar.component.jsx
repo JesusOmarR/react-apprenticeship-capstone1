@@ -74,7 +74,7 @@ function NavBar() {
               </Form>
               <div>
                 {isAuth ? (
-                  <a onClick={logOut} href="#">
+                  <a onClick={logOut} href="/">
                     LogOut
                   </a>
                 ) : (
