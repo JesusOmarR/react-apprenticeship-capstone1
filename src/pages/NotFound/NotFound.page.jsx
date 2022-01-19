@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import './NotFound.styles.css'
+import './NotFound.styled.js'
+import { NotFounContainer } from './NotFound.styled'
 
 function NotFoundPage() {
   return (
-    <section className="not-found">
+    <NotFounContainer>
       <Link to="/" className="home-link">
         home
       </Link>
@@ -15,7 +16,7 @@ function NotFoundPage() {
         alt="page not found"
         className="image-notfound"
       />
-    </section>
+    </NotFounContainer>
   )
 }
 
