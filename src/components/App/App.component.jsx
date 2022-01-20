@@ -6,9 +6,13 @@ import { GlobalProvider } from '../../providers/Global/Global.provider'
 
 // Pages
 import HomePage from '../../pages/Home'
+import LoginPage from '../../pages/Login/Login.page'
 import NotFound from '../../pages/NotFound'
+import Private from '../Private/Private.component'
 import Layout from '../Layout'
+import Favorites from '../../pages/Favorites/Favorites.page'
 import VideoDetails from '../../pages/VideoDetails'
+import FavoriteVideoDetails from '../../pages/FavoriteVideoDetails'
 
 function App() {
   return (
@@ -19,10 +23,18 @@ function App() {
             <Route exact path="/">
               <HomePage />
             </Route>
-            <Route exact path="/:videoid">
+            <Route exact path="/video/:videoid">
               <VideoDetails />
             </Route>
-
+            <Route exact path="/login">
+              <LoginPage />
+            </Route>
+            <Private exact path="/favorites">
+              <Favorites />
+            </Private>
+            <Private exact path="/favorites/:videoid">
+              <FavoriteVideoDetails />
+            </Private>
             <Route path="*">
               <NotFound />
             </Route>

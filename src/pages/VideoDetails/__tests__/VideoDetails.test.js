@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 import { Route, Router, Switch } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 
-describe('Testing HomePage component', () => {
+describe('Testing video deatils component', () => {
   it('Render the VideoDetails page', () => {
     const history = createMemoryHistory({ initialEntries: ['/'] })
     render(

@@ -14,8 +14,19 @@ export const Card = styled.div`
   margin: 1rem auto;
   border-radius: 5px;
   flex-direction: column;
-  box-shadow: 0 4px 2px grey;
+  box-shadow:  ${(props) =>
+    props.darkTheme ? '0 4px 2px black' : '0 4px 2px grey'};
+  cursor: pointer;
+  background-color: ${(props) =>
+    props.darkTheme ? '#8c8c8c' : 'rgba(216, 221, 253, 0.35)'};
+    color:black;
+  
 
+  .items-container{
+    width:100%;
+    padding:0 !important;
+  }
+  
   .cover-image {
     border-radius: 8px 5px 0 0;
     width: 100%;
@@ -36,5 +47,26 @@ export const Card = styled.div`
     text-align: left;
     font-size:0.8rem;
     
+  }
+
+  .favButton{
+    display:none;
+    position:absolute;
+    border:none;
+    background-color:white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+
+    :hover{
+      background-color: grey;
+      color: white;
+    }
+  }
+
+  :hover{
+  
+   .favButton{
+    display:block;
+   }
   }
 `

@@ -1,4 +1,11 @@
-import { CHANGE_THEME, SET_SEARCH_PARAM } from './GloBal.types'
+import {
+  CHANGE_THEME,
+  SET_SEARCH_PARAM,
+  LOG_IN,
+  LOG_OUT,
+  ADD_TO_FAVORITES,
+  REMOVE_FROM_FAVORITES,
+} from './GloBal.types'
 
 export default (state, action) => {
   switch (action.type) {
@@ -12,6 +19,22 @@ export default (state, action) => {
       return {
         ...state,
         darkTheme: !state.darkTheme,
+      }
+    case LOG_IN:
+      return {
+        ...state,
+        isAuth: true,
+      }
+    case LOG_OUT:
+      return {
+        ...state,
+        isAuth: false,
+      }
+    case REMOVE_FROM_FAVORITES:
+    case ADD_TO_FAVORITES:
+      return {
+        ...state,
+        favoriteVideos: action.payload,
       }
     default:
       return state

@@ -8,21 +8,29 @@ import {
   FormControl,
   Button,
 } from 'react-bootstrap'
-import { NavContainer, ItemsNavContainer } from './NavBar.styled'
+import {
+  NavContainer,
+  ItemsNavContainer,
+  IconImage,
+  SideToogle,
+  SideLink,
+} from './NavBar.styled'
 import { useHistory } from 'react-router-dom'
+import userAvatar from '../../assets/download.png'
 
-// Utils
+// Context
 import { GlobalContext } from '../../providers/Global/Global.provider'
 
 function NavBar() {
   const [params, setParams] = useState('wizeline')
-  const { onSubmitSearch, changeTheme, darkTheme } = useContext(GlobalContext)
+  const { onSubmitSearch, changeTheme, darkTheme, isAuth, logOut } =
+    useContext(GlobalContext)
   const history = useHistory()
 
   // Functions
   const onSubmit = (e) => {
     e.preventDefault()
-    history.push('./')
+    history.push('/')
     onSubmitSearch(params)
   }
 
@@ -32,10 +40,13 @@ function NavBar() {
 
   return (
     <NavContainer>
-      <Navbar bg={darkTheme ? 'dark' : 'light'} expand={false}>
+      <Navbar collapseOnSelect bg={darkTheme ? 'dark' : 'light'} expand={false}>
         <Container fluid>
-          <ItemsNavContainer>
-            <Navbar.Toggle aria-controls="offcanvasNavbar" />
+          <ItemsNavContainer darkTheme={darkTheme}>
+            <Navbar.Toggle
+              bsPrefix="navbar-toggler"
+              aria-controls="offcanvasNavbar"
+            />
             <Form className="d-flex">
               <FormControl
                 type="search"
@@ -56,16 +67,30 @@ function NavBar() {
                 Search
               </Button>
             </Form>
-            <div>
-              <a href={'/home'}>Login</a>
+
+            <div className="login-container">
               <Form>
                 <Form.Check
                   type="switch"
                   id="custom-switch"
                   onChange={onToogleChange}
                   checked={darkTheme ? true : false}
+                  label="Dark theme"
+                  className="formcheck"
                 />
               </Form>
+              <div className="link-container">
+                {isAuth ? (
+                  <a onClick={logOut} href="/">
+                    LogOut
+                  </a>
+                ) : (
+                  <a href={'/login'}>Login</a>
+                )}
+                <IconImage
+                  src={isAuth.avatarUrl ? isAuth.avatarUrl : userAvatar}
+                ></IconImage>
+              </div>
             </div>
           </ItemsNavContainer>
 
@@ -76,10 +101,44 @@ function NavBar() {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id="offcanvasNavbarLabel">
-                Offcanvas
+                Wize Tube
               </Offcanvas.Title>
             </Offcanvas.Header>
-            <Offcanvas.Body>Favs</Offcanvas.Body>
+            <Offcanvas.Body>
+              <SideToogle>
+                <Form>
+                  <Form.Check
+                    type="switch"
+                    id="custom-switch"
+                    onChange={onToogleChange}
+                    checked={darkTheme ? true : false}
+                    label="Dark theme"
+                    className="formcheck"
+                  />
+                </Form>
+              </SideToogle>
+
+              <p>
+                <a href="/">Home</a>
+              </p>
+              {isAuth ? (
+                <a href="/favorites">Favorites</a>
+              ) : (
+                <a href="/login">Login</a>
+              )}
+
+              <SideLink>
+                <div className="side-link">
+                  {isAuth ? (
+                    <a onClick={logOut} href="/">
+                      LogOut
+                    </a>
+                  ) : (
+                    <a href={'/login'}>Login</a>
+                  )}
+                </div>
+              </SideLink>
+            </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
